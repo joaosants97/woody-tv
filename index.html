@@ -5,33 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="referrer" content="no-referrer">
     <meta name="robots" content="noindex, follow">
-    <title>Abrir Woody TV</title>
+    <title>Woody TV</title>
     <style>
-      :root { color-scheme: dark; font-family: system-ui, sans-serif; }
-      body { display: grid; min-height: 100svh; margin: 0; place-items: center; background: #151511; color: #f5f1e7; }
-      main { max-width: 30rem; padding: 2rem; text-align: center; }
-      h1 { font-size: 2rem; }
-      p { line-height: 1.6; }
-      a { color: #d9e6a5; text-underline-offset: .2em; }
-      a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+      :root { color-scheme: dark; }
+      html, body, main { width: 100%; height: 100%; }
+      body { margin: 0; overflow: hidden; background: #151511; }
+      iframe { display: block; width: 100%; height: 100%; border: 0; }
     </style>
   </head>
   <body>
     <main>
-      <h1>Woody TV</h1>
-      <p>A abrir a Woody TV…</p>
-      <!-- Para mudar de alojamento, alterar apenas o endereço deste link. -->
-      <p><a id="destination" href="https://woody-tv-jtaps.alwaysdata.net/">Continuar para a Woody TV</a></p>
-      <noscript><p>Use o link acima para continuar.</p></noscript>
+      <!-- Para mudar de alojamento, alterar apenas o endereço no atributo src. -->
+      <iframe
+        id="woody-app"
+        title="Woody TV — televisão em direto"
+        src="https://woody-tv-jtaps.alwaysdata.net/"
+        allow="fullscreen; autoplay; encrypted-media; picture-in-picture; screen-wake-lock"
+        allowfullscreen
+      ></iframe>
     </main>
     <script>
       (() => {
-        const link = document.getElementById('destination');
-        const destination = new URL(link.href);
+        const frame = document.getElementById('woody-app');
+        const destination = new URL(frame.src);
         destination.search = window.location.search;
         destination.hash = window.location.hash;
-        link.href = destination.href;
-        window.location.replace(destination.href);
+        if (frame.src !== destination.href) frame.src = destination.href;
       })();
     </script>
   </body>
