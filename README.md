@@ -39,4 +39,6 @@ As pessoas continuam a usar o mesmo endereço fixo. Não alterar o nome da conta
 
 ## Publicação
 
-Publicar apenas `index.html`, `.nojekyll` e este `README.md` no repositório público dedicado. Não publicar a pasta da aplicação Woody TV. Em **Settings → Pages**, escolher **Deploy from a branch**, ramo `main` e pasta `/ (root)`, depois **Save**. Após cada publicação, verificar o endereço fixo, o início de sessão e o leitor incorporado.
+Publicar apenas `index.html`, `.nojekyll`, este `README.md`, `manifest.webmanifest` e os seis ícones (`favicon.ico`, `apple-touch-icon.png`, `woody-16.png`, `woody-32.png`, `woody-192.png` e `woody-512.png`) no repositório público dedicado. Não publicar a pasta da aplicação Woody TV. Em **Settings → Pages**, escolher **Deploy from a branch**, ramo `main` e pasta `/ (root)`, depois **Save**. Após cada publicação, verificar o endereço fixo, o início de sessão e o leitor incorporado.
+
+Os ícones são cópias exatas dos ícones originais da aplicação. A declaração `apple-touch-icon` fica na página principal, para o iPhone usar o ícone do Woody ao adicionar o endereço fixo ao ecrã principal. Os caminhos são relativos a `/woody-tv/`, incluindo o início e âmbito do manifesto, para continuar a abrir a máscara. Os ícones ficam no GitHub e não dependem do fornecedor da aplicação. Um atalho já instalado no iPhone pode ter de ser removido e adicionado novamente para atualizar o ícone.
