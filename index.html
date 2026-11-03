@@ -29,7 +29,7 @@
         id="woody-app"
         title="Woody TV — televisão em direto"
         src="https://woody-tv-jtaps.alwaysdata.net/"
-        allow="fullscreen; autoplay; encrypted-media; picture-in-picture; screen-wake-lock"
+        allow="fullscreen; autoplay; encrypted-media; picture-in-picture; screen-wake-lock; storage-access"
         allowfullscreen
       ></iframe>
     </main>
@@ -37,8 +37,20 @@
       (() => {
         const frame = document.getElementById('woody-app');
         const destination = new URL(frame.src);
-        destination.search = window.location.search;
+        const paths = new Set(['/', '/watch.html', '/users.html', '/sala.html', '/filmes.html', '/programas.html', '/resumos.html', '/login.html', '/device-limit.html']);
+        const query = new URLSearchParams(window.location.search);
+        const route = query.getAll('woody-path');
+        query.delete('woody-path');
+        if (route.length === 1 && paths.has(route[0])) destination.pathname = route[0];
+        destination.search = query.toString();
         destination.hash = window.location.hash;
+        window.addEventListener('message', event => {
+          if (event.source !== frame.contentWindow || event.origin !== destination.origin) return;
+          if (event.data?.app !== 'woody-mask-v1' || event.data.type !== 'context-request') return;
+          const mask = new URL(window.location.href);
+          mask.search = ''; mask.hash = '';
+          frame.contentWindow.postMessage({app: 'woody-mask-v1', type: 'context', url: mask.href}, destination.origin);
+        });
         if (frame.src !== destination.href) frame.src = destination.href;
       })();
     </script>
