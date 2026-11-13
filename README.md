@@ -4,7 +4,7 @@ Página independente que apresenta a Woody TV dentro de um iframe a ocupar toda 
 
 - Repositório: `joaosants97/woody-tv`.
 - Endereço fixo: `https://joaosants97.github.io/woody-tv/`.
-- Alojamento atual: `https://woody-tv-jtaps.alwaysdata.net/`.
+- Alojamento atual: `https://woody-tv-site.onrender.com/`.
 - Publicação: GitHub Pages, ramo `main`, pasta `/ (root)`.
 
 ## Funcionamento
